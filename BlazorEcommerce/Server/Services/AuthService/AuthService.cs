@@ -63,7 +63,7 @@ namespace BlazorEcommerce.Server.Services.AuthService
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
-            _context.Users.Add(user);
+            await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
 
             return new ServiceResponse<int> { Data = user.Id, Message = "Registration successful!" };
